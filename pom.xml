@@ -6,7 +6,7 @@
 
   <groupId>me.sourceform</groupId>
   <artifactId>PlayerVaults</artifactId>
-  <version>1.0-BETA-1</version>
+  <version>1.0-BETA-2</version>
   <packaging>jar</packaging>
 
   <name>PlayerVaults</name>

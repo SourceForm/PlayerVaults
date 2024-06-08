@@ -5,3 +5,9 @@ api-version: '1.20'
 authors: [SourceForm]
 description: Simple plugin which provides players with a personal vault to store valuables
 website: https://github.com/SourceForm
+commands:
+  playervault:
+    description: Opens the playervault menu
+    usage: /<command>
+    aliases:
+      - pv
