@@ -1,6 +1,6 @@
-package me.sourceform.commands;
+package me.sourceform.Commands;
 
-import me.sourceform.playervaults.PlayerVaults;
+import me.sourceform.PlayerVaults.PlayerVaults;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

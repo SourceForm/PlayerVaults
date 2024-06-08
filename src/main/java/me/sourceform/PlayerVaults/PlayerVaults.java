@@ -1,7 +1,7 @@
-package me.sourceform.playervaults;
+package me.sourceform.PlayerVaults;
 
-import me.sourceform.commands.MenuHandler;
-import me.sourceform.commands.VaultCommand;
+import me.sourceform.Commands.MenuHandler;
+import me.sourceform.Commands.VaultCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -13,12 +13,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PlayerVaults extends JavaPlugin {
 
+    private static PlayerVaults plugin;
+
+    public static PlayerVaults getPlugin() {
+        return plugin;
+    }
+
     @Override
     public void onEnable() {
         // Plugin startup logic
         saveDefaultConfig();
         getCommand("playervault").setExecutor(new VaultCommand(this));
         getServer().getPluginManager().registerEvents(new MenuHandler(this), this);
+        plugin = this;
     }
 
     @Override
