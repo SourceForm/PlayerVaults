@@ -2,6 +2,7 @@ package me.sourceform.PlayerVaults;
 
 import me.sourceform.Commands.MenuHandler;
 import me.sourceform.Commands.VaultCommand;
+import me.sourceform.Model.Vault;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -36,59 +37,28 @@ public final class PlayerVaults extends JavaPlugin {
 
     public void openVault(Player player){
         Inventory vault_menu = Bukkit.createInventory(player, 9, ChatColor.AQUA + "Player Vaults");
-        ItemStack vault1 = new ItemStack(Material.DIAMOND_BLOCK);
-        ItemStack vault2 = new ItemStack(Material.GOLD_BLOCK);
-        ItemStack vault3 = new ItemStack(Material.EMERALD_BLOCK);
-        ItemStack vault4 = new ItemStack(Material.IRON_BLOCK);
-        ItemStack vault5 = new ItemStack(Material.REDSTONE_BLOCK);
-        ItemStack vault6 = new ItemStack(Material.LAPIS_BLOCK);
-        ItemStack vault7 = new ItemStack(Material.COPPER_BLOCK);
-        ItemStack vault8 = new ItemStack(Material.BEACON);
-        ItemStack vault9 = new ItemStack(Material.END_CRYSTAL);
-        ItemMeta vault1_meta = vault1.getItemMeta();
-        ItemMeta vault2_meta = vault1.getItemMeta();
-        ItemMeta vault3_meta = vault1.getItemMeta();
-        ItemMeta vault4_meta = vault1.getItemMeta();
-        ItemMeta vault5_meta = vault1.getItemMeta();
-        ItemMeta vault6_meta = vault1.getItemMeta();
-        ItemMeta vault7_meta = vault1.getItemMeta();
-        ItemMeta vault8_meta = vault1.getItemMeta();
-        ItemMeta vault9_meta = vault1.getItemMeta();
-        vault1_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 1");
-        vault2_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 2");
-        vault3_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 3");
-        vault4_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 4");
-        vault5_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 5");
-        vault6_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 6");
-        vault7_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 7");
-        vault8_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 8");
-        vault9_meta.setDisplayName(ChatColor.DARK_GREEN + "Vault 9");
-        vault1.setItemMeta(vault1_meta);
-        vault2.setItemMeta(vault1_meta);
-        vault3.setItemMeta(vault1_meta);
-        vault4.setItemMeta(vault1_meta);
-        vault5.setItemMeta(vault1_meta);
-        vault6.setItemMeta(vault1_meta);
-        vault7.setItemMeta(vault1_meta);
-        vault8.setItemMeta(vault1_meta);
-        vault9.setItemMeta(vault1_meta);
 
-        vault_menu.setItem(0, vault1);
-        vault_menu.setItem(1, vault2);
-        vault_menu.setItem(2, vault3);
-        vault_menu.setItem(3, vault4);
-        vault_menu.setItem(4, vault5);
-        vault_menu.setItem(5, vault6);
-        vault_menu.setItem(6, vault7);
-        vault_menu.setItem(7, vault8);
-        vault_menu.setItem(8, vault9);
+        // Create vaults
+        Vault[] vaults = {
+            new Vault(Material.DIAMOND_BLOCK, ChatColor.DARK_GREEN, 1),
+            new Vault(Material.GOLD_BLOCK, ChatColor.DARK_GREEN, 2),
+            new Vault(Material.EMERALD_BLOCK, ChatColor.DARK_GREEN, 3),
+            new Vault(Material.IRON_BLOCK, ChatColor.DARK_GREEN, 4),
+            new Vault(Material.REDSTONE_BLOCK, ChatColor.DARK_GREEN, 5),
+            new Vault(Material.LAPIS_BLOCK, ChatColor.DARK_GREEN, 6),
+            new Vault(Material.COPPER_BLOCK, ChatColor.DARK_GREEN, 7),
+            new Vault(Material.BEACON, ChatColor.DARK_GREEN, 8),
+            new Vault(Material.END_CRYSTAL, ChatColor.DARK_GREEN, 9),
+        };
+
+        // Add vaults to menu
+        for (int i = 0; i < vaults.length; i++) {
+            vault_menu.setItem(i, vaults[i].getVault());
+        }
 
         player.openInventory(vault_menu);
     }
-    public void openVault1(Player player){
-        Inventory vault1_menu = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault 1");
-    }
-    public void openVault2(Player player){
-        Inventory vault2_menu = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault 2");
+    public void openVault(int vaultId, Player player) {
+        Inventory vaultMenu = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault " + vaultId);
     }
 }

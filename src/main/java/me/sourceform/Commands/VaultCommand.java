@@ -8,12 +8,12 @@ import org.bukkit.entity.Player;
 
 public class VaultCommand implements CommandExecutor {
 
-    PlayerVaults plugin;
-
+    private final PlayerVaults plugin;
 
     public VaultCommand(PlayerVaults plugin) {
         this.plugin = plugin;
     }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 

@@ -11,11 +11,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 
 public class Listeners implements Listener {
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
-
         PersistentDataContainer data = player.getPersistentDataContainer();
 
         if (!data.has(new NamespacedKey(PlayerVaults.getPlugin(), "vault1"), PersistentDataType.STRING)) {
