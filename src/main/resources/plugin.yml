@@ -11,3 +11,7 @@ commands:
     usage: /<command>
     aliases:
       - pv
+permissions:
+  playervaults.openvault:
+    description: allows the player to use vaults
+    default: op
