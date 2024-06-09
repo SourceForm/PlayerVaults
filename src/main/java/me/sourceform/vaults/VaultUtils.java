@@ -26,6 +26,7 @@ public class VaultUtils {
 
             for (int i = 0; i < items.size(); i++){
                 os.writeObject(items.get(i));
+                System.out.println(items);
             }
 
             os.flush();
@@ -45,8 +46,7 @@ public class VaultUtils {
         ArrayList<ItemStack> items = new ArrayList<>();
 
         String encodedItems = data.get(new NamespacedKey(Vaults.getPlugin(), "vault" + vaultId), PersistentDataType.STRING);
-
-        if (!encodedItems.isEmpty()){
+        if (encodedItems != null && !encodedItems.isEmpty()){
 
             byte[] rawData = Base64.getDecoder().decode(encodedItems);
 
@@ -59,6 +59,7 @@ public class VaultUtils {
 
                 for (int i = 0; i < itemsCount; i++){
                     items.add((ItemStack) in.readObject());
+                    System.out.println(items);
                 }
 
                 in.close();

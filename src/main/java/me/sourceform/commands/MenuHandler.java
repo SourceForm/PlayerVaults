@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class MenuHandler implements Listener {
 
     Vaults plugin;
-    private final String VAULT_MENU = ChatColor.AQUA + "Player Vaults";
+    private final String VAULT_MENU = ChatColor.AQUA + "Main Menu";
 
     public MenuHandler(Vaults plugin){
         this.plugin = plugin;
@@ -20,9 +20,8 @@ public class MenuHandler implements Listener {
     public void onMenuClick(InventoryClickEvent e){
         Player player = (Player) e.getWhoClicked();
         if (e.getView().getTitle().equalsIgnoreCase(VAULT_MENU)){
-            player.sendMessage("Opening Vault " + e.getCurrentItem().getItemMeta().getCustomModelData());
             player.closeInventory();
-            plugin.openVault(e.getCurrentItem().getItemMeta().getCustomModelData(), player);
+            plugin.openVaultMenu(e.getCurrentItem().getItemMeta().getCustomModelData(), player);
         }
     }
 }

@@ -2,6 +2,7 @@ package me.sourceform.vaults;
 
 import me.sourceform.commands.MenuHandler;
 import me.sourceform.commands.VaultCommand;
+import me.sourceform.listeners.Listeners;
 import me.sourceform.model.Vault;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public final class Vaults extends JavaPlugin {
         saveDefaultConfig();
         getCommand("playervault").setExecutor(new VaultCommand(this));
         getServer().getPluginManager().registerEvents(new MenuHandler(this), this);
+        getServer().getPluginManager().registerEvents(new Listeners(), this);
         plugin = this;
     }
 
@@ -36,8 +39,8 @@ public final class Vaults extends JavaPlugin {
         saveConfig();
     }
 
-    public void openVault(Player player){
-        Inventory vault_menu = Bukkit.createInventory(player, 9, ChatColor.AQUA + "Player Vaults");
+    public void openVaultMenu(Player player){
+        Inventory vault_menu = Bukkit.createInventory(player, 9, ChatColor.AQUA + "Main Menu");
 
         // Create vaults
         Vault[] vaults = {
@@ -60,13 +63,14 @@ public final class Vaults extends JavaPlugin {
         player.openInventory(vault_menu);
     }
 
-    public void openVault(int vaultId, Player player) {
-        Inventory storageVault = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault " + vaultId);
+    public void openVaultMenu(int vaultId, Player player) {
+        Inventory storageVault = Bukkit.createInventory(player, 54, ChatColor.AQUA + "Vault " + vaultId);
 
         ArrayList<ItemStack> vaultItems = VaultUtils.getItems(player, vaultId);
 
         vaultItems.stream()
                 .forEach(itemStack -> storageVault.addItem(itemStack));
+                System.out.println(vaultItems);
 
         player.openInventory(storageVault);
     }

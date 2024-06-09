@@ -32,9 +32,7 @@ public class Listeners implements Listener {
     public void onInventoryClose(InventoryCloseEvent e) {
 
         Player p = (Player) e.getPlayer();
-
-        if (e.getView().getTitle().equalsIgnoreCase("Vault")) {
-
+        if (e.getView().getTitle().contains("Vault")) {
             ArrayList<ItemStack> prunedItems = new ArrayList<>();
 
             Arrays.stream(e.getInventory().getContents())
