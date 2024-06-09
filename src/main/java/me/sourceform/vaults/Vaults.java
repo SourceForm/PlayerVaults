@@ -8,7 +8,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
 
 public final class Vaults extends JavaPlugin {
 
@@ -56,8 +59,15 @@ public final class Vaults extends JavaPlugin {
 
         player.openInventory(vault_menu);
     }
+
     public void openVault(int vaultId, Player player) {
         Inventory storageVault = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault " + vaultId);
+
+        ArrayList<ItemStack> vaultItems = VaultUtils.getItems(player, vaultId);
+
+        vaultItems.stream()
+                .forEach(itemStack -> storageVault.addItem(itemStack));
+
         player.openInventory(storageVault);
     }
 }

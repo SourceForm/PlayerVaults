@@ -17,50 +17,34 @@ import java.util.List;
 
 public class VaultUtils {
 
-    public static void storeItems(List<ItemStack> items, Player p){
-
+    public static void storeItems(List<ItemStack> items, Player p, int vaultId){
         PersistentDataContainer data = p.getPersistentDataContainer();
+        try{
+            ByteArrayOutputStream io = new ByteArrayOutputStream();
+            BukkitObjectOutputStream os = new BukkitObjectOutputStream(io);
+            os.writeInt(items.size());
 
-        if (items.size() == 0){
-            data.set(new NamespacedKey(Vaults.getPlugin(), "vault"), PersistentDataType.STRING, "");
-        }else{
-
-            try{
-
-                ByteArrayOutputStream io = new ByteArrayOutputStream();
-                BukkitObjectOutputStream os = new BukkitObjectOutputStream(io);
-
-                os.writeInt(items.size());
-
-                for (int i = 0; i < items.size(); i++){
-                    os.writeObject(items.get(i));
-                }
-
-                os.flush();
-
-                byte[] rawData = io.toByteArray();
-
-                String encodedData = Base64.getEncoder().encodeToString(rawData);
-
-                data.set(new NamespacedKey(Vaults.getPlugin(), "vault"), PersistentDataType.STRING, encodedData);
-
-                os.close();
-
-            }catch (IOException ex){
-                System.out.println(ex);
+            for (int i = 0; i < items.size(); i++){
+                os.writeObject(items.get(i));
             }
 
+            os.flush();
+            byte[] rawData = io.toByteArray();
+            String encodedData = Base64.getEncoder().encodeToString(rawData);
+            data.set(new NamespacedKey(Vaults.getPlugin(), "vault" + vaultId), PersistentDataType.STRING, encodedData);
+            os.close();
+        }catch (IOException ex){
+            System.out.println(ex);
         }
-
     }
 
-    public static ArrayList<ItemStack> getItems(Player p){
+    public static ArrayList<ItemStack> getItems(Player p, int vaultId){
 
         PersistentDataContainer data = p.getPersistentDataContainer();
 
         ArrayList<ItemStack> items = new ArrayList<>();
 
-        String encodedItems = data.get(new NamespacedKey(Vaults.getPlugin(), "vault"), PersistentDataType.STRING);
+        String encodedItems = data.get(new NamespacedKey(Vaults.getPlugin(), "vault" + vaultId), PersistentDataType.STRING);
 
         if (!encodedItems.isEmpty()){
 

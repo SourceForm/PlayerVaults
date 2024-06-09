@@ -33,7 +33,7 @@ public class Listeners implements Listener {
 
         Player p = (Player) e.getPlayer();
 
-        if (e.getView().getTitle().equalsIgnoreCase("Your Personal Vault")) {
+        if (e.getView().getTitle().equalsIgnoreCase("Vault")) {
 
             ArrayList<ItemStack> prunedItems = new ArrayList<>();
 
@@ -47,8 +47,7 @@ public class Listeners implements Listener {
                     .forEach(itemStack -> prunedItems.add(itemStack));
 
             System.out.println("size: " + prunedItems.size());
-
-            VaultUtils.storeItems(prunedItems, p);
+            VaultUtils.storeItems(prunedItems, p, Integer.parseInt(e.getView().getTitle().split(" ")[1]));
 
         }
     }
