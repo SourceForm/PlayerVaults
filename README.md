@@ -17,5 +17,16 @@
 #### '/playervault'
 - Description: Opens the main menu for vault selection.
 - Usage: '/playervault' OR '/pv'
+- Permission: 'playervaults.openvault'
+## Example
+```plaintext
+/playervault
+```
+
+## Events
+The plugin listens to inventory-related events to handle the saving of vault contents.
+
+## Contributions
+### Thank you to Billy for helping me figure out the code work for storing independent data for each player!
 
 
