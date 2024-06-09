@@ -22,8 +22,9 @@ public class Listeners implements Listener {
         Player player = e.getPlayer();
         PersistentDataContainer data = player.getPersistentDataContainer();
 
-        if (!data.has(new NamespacedKey(Vaults.getPlugin(), "vault"), PersistentDataType.STRING)) {
-            data.set(new NamespacedKey(Vaults.getPlugin(), "vault"), PersistentDataType.STRING, "");
+        for (int i = 1; i <= 9; i++) {
+            if (!data.has(new NamespacedKey(Vaults.getPlugin(), "vault" + i), PersistentDataType.STRING))
+                data.set(new NamespacedKey(Vaults.getPlugin(), "vault" + i), PersistentDataType.STRING, "");
         }
     }
 
