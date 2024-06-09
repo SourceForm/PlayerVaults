@@ -1,8 +1,9 @@
-package me.sourceform.Model;
+package me.sourceform.model;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class Vault {
     private final ItemStack vault;
@@ -14,7 +15,7 @@ public class Vault {
         this.vaultId = vaultId;
 
         // Set vault meta
-        var vaultMeta = vault.getItemMeta();
+        ItemMeta vaultMeta = vault.getItemMeta();
         vaultMeta.setDisplayName(vaultColor + "Vault " + vaultId);
         vaultMeta.setCustomModelData(vaultId);
         this.vault.setItemMeta(vaultMeta);

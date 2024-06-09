@@ -1,16 +1,15 @@
-package me.sourceform.Commands;
+package me.sourceform.commands;
 
-import me.sourceform.PlayerVaults.PlayerVaults;
+import me.sourceform.vaults.Vaults;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class VaultCommand implements CommandExecutor {
+    private final Vaults plugin;
 
-    private final PlayerVaults plugin;
-
-    public VaultCommand(PlayerVaults plugin) {
+    public VaultCommand(Vaults plugin) {
         this.plugin = plugin;
     }
 

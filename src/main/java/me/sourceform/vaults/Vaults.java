@@ -1,22 +1,20 @@
-package me.sourceform.PlayerVaults;
+package me.sourceform.vaults;
 
-import me.sourceform.Commands.MenuHandler;
-import me.sourceform.Commands.VaultCommand;
-import me.sourceform.Model.Vault;
+import me.sourceform.commands.MenuHandler;
+import me.sourceform.commands.VaultCommand;
+import me.sourceform.model.Vault;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class PlayerVaults extends JavaPlugin {
+public final class Vaults extends JavaPlugin {
 
-    private static PlayerVaults plugin;
+    private static Vaults plugin;
 
-    public static PlayerVaults getPlugin() {
+    public static Vaults getPlugin() {
         return plugin;
     }
 
@@ -59,6 +57,7 @@ public final class PlayerVaults extends JavaPlugin {
         player.openInventory(vault_menu);
     }
     public void openVault(int vaultId, Player player) {
-        Inventory vaultMenu = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault " + vaultId);
+        Inventory storageVault = Bukkit.createInventory(player, 45, ChatColor.AQUA + "Vault " + vaultId);
+        player.openInventory(storageVault);
     }
 }

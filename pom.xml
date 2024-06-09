@@ -6,14 +6,14 @@
 
   <groupId>me.sourceform</groupId>
   <artifactId>PlayerVaults</artifactId>
-  <version>1.0-BETA-2</version>
+  <version>1.0-BETA-12</version>
   <packaging>jar</packaging>
 
   <name>PlayerVaults</name>
 
     <description>Simple plugin which provides players with a personal vault to store valuables</description>
     <properties>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
     <url>https://github.com/SourceForm</url>
