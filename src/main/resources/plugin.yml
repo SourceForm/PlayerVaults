@@ -1,7 +1,7 @@
 name: PlayerVaults
 version: '${project.version}'
 main: me.sourceform.vaults.Vaults
-api-version: '1.20'
+api-version: '1.21'
 authors: [SourceForm]
 description: Simple plugin which provides players with a personal vault to store valuables
 website: https://github.com/SourceForm
